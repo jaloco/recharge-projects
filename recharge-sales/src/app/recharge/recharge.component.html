@@ -1,0 +1,58 @@
+<div class="recharge">
+  <h2>RECARGAS</h2>
+  <form (ngSubmit)="onSubmit()" #rechargeForm="ngForm" class="recharge-form">
+    <div class="form-group">
+      <label for="vendedor">Vendedor:</label>
+      <input type="text" id="vendedor" [(ngModel)]="vendedor" name="vendedor" required>
+    </div>
+    <div class="form-group">
+      <label for="operador">Operador:</label>
+      <select id="operador" [(ngModel)]="recarga.operador" name="operador" required>
+        <option *ngFor="let operador of (operadores | keyvalue)" [value]="operador.value">
+          {{ operador.key }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="valor">Valor:</label>
+      <input type="number" id="valor" [(ngModel)]="recarga.valor" name="valor" required min="1">
+      <div *ngIf="rechargeForm.controls.valor?.invalid && rechargeForm.controls.valor.touched">
+        <small class="error" *ngIf="rechargeForm.controls.valor?.errors?.min">El valor debe ser mayor a cero.</small>
+        <small class="error" *ngIf="rechargeForm.controls.valor?.errors?.required">Este campo es obligatorio.</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" id="cantidad" [(ngModel)]="recarga.cantidad" name="cantidad" required min="1">
+      <div *ngIf="rechargeForm.controls.cantidad?.invalid && rechargeForm.controls.cantidad.touched">
+        <small class="error" *ngIf="rechargeForm.controls.cantidad?.errors?.min">La cantidad debe ser mayor a cero.</small>
+        <small class="error" *ngIf="rechargeForm.controls.cantidad?.errors?.required">Este campo es obligatorio.</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <button type="submit" [disabled]="!rechargeForm.form.valid">Vender</button>
+    </div>
+  </form>
+
+  <h2>Recargas Realizadas</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Operador</th>
+        <th>Valor</th>
+        <th>Cantidad</th>
+        <th>Vendedor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recarga of recargas">
+        <td>{{ recarga.id }}</td>
+        <td>{{ recarga.operador }}</td>
+        <td>{{ recarga.valor }}</td>
+        <td>{{ recarga.cantidad }}</td>
+        <td>{{ recarga.vendedor }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
