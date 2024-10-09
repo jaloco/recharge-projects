@@ -14,6 +14,7 @@ export enum Operador {
   export interface Recharge {
     id: any|null;
     operador: Operador;
+    numero: number;
     valor: number;
     cantidad: number;
   }

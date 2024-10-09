@@ -18,7 +18,7 @@ export class RechargeComponent implements OnInit {
   vendedor: string = '';
 
   rechargeForm: FormGroup
-  recarga: any = { id: 0, operador: Operador.COMCEL, valor: 0, cantidad: 0, vendedor:"" };
+  recarga: any = { id: 0, operador: Operador.COMCEL, valor: 0, numero:0, cantidad: 0, vendedor:"" };
 
   operadores = Operador; 
   constructor(
@@ -29,6 +29,7 @@ export class RechargeComponent implements OnInit {
     this.rechargeForm = this.fb.group({
       vendedor: ['', Validators.required],
       operador: ['', Validators.required],
+      numero: ['', Validators.required],
       valor: [0, [Validators.required, Validators.min(1)]],
       cantidad: [0, [Validators.required, Validators.min(1)]]
     });

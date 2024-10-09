@@ -14,6 +14,10 @@
       </select>
     </div>
     <div class="form-group">
+      <label for="numero">Numero:</label>
+      <input type="number" id="numero" [(ngModel)]="recarga.numero" name="numero" required>
+    </div>
+    <div class="form-group">
       <label for="valor">Valor:</label>
       <input type="number" id="valor" [(ngModel)]="recarga.valor" name="valor" required min="1">
       <div *ngIf="rechargeForm.controls.valor?.invalid && rechargeForm.controls.valor.touched">
@@ -40,6 +44,7 @@
       <tr>
         <th>ID</th>
         <th>Operador</th>
+        <th>Numero</th>
         <th>Valor</th>
         <th>Cantidad</th>
         <th>Vendedor</th>
@@ -49,6 +54,7 @@
       <tr *ngFor="let recarga of recargas">
         <td>{{ recarga.id }}</td>
         <td>{{ recarga.operador }}</td>
+        <td>{{ recarga.numero }}</td>
         <td>{{ recarga.valor }}</td>
         <td>{{ recarga.cantidad }}</td>
         <td>{{ recarga.vendedor }}</td>

@@ -25,6 +25,9 @@ public class Recharge {
 
     @Column(name = "valor", nullable = false)
     private double valor;
+    
+    @Column(name = "numero", nullable = false)
+    private Long numero;
 
     @Column(name = "cantidad", nullable = false)
     private int cantidad;
@@ -32,9 +35,10 @@ public class Recharge {
     public Recharge() {
     }
 
-    public Recharge(Operador operador, double valor, int cantidad) {
+    public Recharge(Operador operador, double valor, Long numero, int cantidad) {
         this.operador = operador;
         this.valor = valor;
+        this.numero = numero;
         this.cantidad = cantidad;
     }
     public Long getId() {
@@ -67,6 +71,14 @@ public class Recharge {
 
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}
+	
+	public Long getNumero() {
+		return numero;
+	}
+
+	public void setCantidad(Long numero) {
+		this.numero = numero;
 	}
 
 	@Override
